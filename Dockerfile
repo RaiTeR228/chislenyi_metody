@@ -9,13 +9,13 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/list/*
 
 # копируем все зависимости проект
-COPY requirements.txt
+COPY src/app/src/ requirements.txt
 
 # устанавливаем зависимости python
-RUN pip insall --no-cashe-dir -r requirements.txt
+RUN pip insall --no-cache-dir -r requirements.txt
 
 # копируем проект
-COPY src/app/src/
+COPY src/ ./src/ 
 
 # порт на котором разворачиваем
 EXPOSE 8000
